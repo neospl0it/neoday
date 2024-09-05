@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778867567662">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Windows Fundamentals 3</title>
+    <meta name="title" content="Windows Fundamentals 3">
+    <meta name="description" content="We will continue our journey exploring the Windows operating system.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/internship/day-01/tryhackme/windowsfundamentals3/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/internship/day-01/tryhackme/windowsfundamentals3/">
+    <meta property="og:title" content="Windows Fundamentals 3">
+    <meta property="og:description" content="We will continue our journey exploring the Windows operating system.">
+    <meta property="og:image" content="https://assets.tryhackme.com/additional/win-fun3/windows-update2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/internship/day-01/tryhackme/windowsfundamentals3/">
+    <meta property="twitter:title" content="Windows Fundamentals 3">
+    <meta property="twitter:description" content="We will continue our journey exploring the Windows operating system.">
+    <meta property="twitter:image" content="https://assets.tryhackme.com/additional/win-fun3/windows-update2.png">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../../resources/css/retype.css?v=3.5.0.778867567662" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.778867567662" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.778867567662" data-turbo-eval="false" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">NEODay</span>
+                        </a>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://ne0day.github.io">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M11.03 2.59a1.501 1.501 0 0 1 1.94 0l7.5 6.363a1.5 1.5 0 0 1 .53 1.144V19.5a1.5 1.5 0 0 1-1.5 1.5h-5.75a.75.75 0 0 1-.75-.75V14h-2v6.25a.75.75 0 0 1-.75.75H4.5A1.5 1.5 0 0 1 3 19.5v-9.403c0-.44.194-.859.53-1.144ZM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v6.25h5v-9.403Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/ne0day/ne0day.github.io/discussions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"/><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>Discussions</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/neospl0it">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://ne0day.github.io">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M11.03 2.59a1.501 1.501 0 0 1 1.94 0l7.5 6.363a1.5 1.5 0 0 1 .53 1.144V19.5a1.5 1.5 0 0 1-1.5 1.5h-5.75a.75.75 0 0 1-.75-.75V14h-2v6.25a.75.75 0 0 1-.75.75H4.5A1.5 1.5 0 0 1 3 19.5v-9.403c0-.44.194-.859.53-1.144ZM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v6.25h5v-9.403Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/ne0day/ne0day.github.io/discussions">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"/><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>Discussions</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/neospl0it">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="windows-fundamentals-3" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-fundamentals-3">#</doc-anchor-trigger>
+        <span>Windows Fundamentals 3</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="task">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task">#</doc-anchor-trigger>
+        <span>Task</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="introduction">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#introduction">#</doc-anchor-trigger>
+        <span>Introduction</span>
+    </h3>
+</doc-anchor-target>
+<p>We will continue our journey exploring the Windows operating system.</p>
+<p>To summarize the previous two rooms:</p>
+<ul>
+<li>In Windows Fundamentals 2, we covered various utilities, such as System Configuration, Computer Management, Resource Monitor, etc.</li>
+</ul>
+<p>This module will attempt to provide an overview of the security features within the Windows operating system.</p>
+<p>Launch the attached virtual machine. If you wish to access the virtual machine via Remote Desktop, use the credentials below.</p>
+<p><strong>Machine IP:</strong> <code v-pre>10.10.84.95</code></p>
+<p><strong>User:</strong> <code v-pre>administrator</code></p>
+<p><strong>Password:</strong> <code v-pre>letmein123!</code></p>
+<doc-anchor-target id="task-2">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-2">#</doc-anchor-trigger>
+        <span>Task 2</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="windows-updates">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-updates">#</doc-anchor-trigger>
+        <span>Windows Updates</span>
+    </h3>
+</doc-anchor-target>
+<p>Let&#x27;s start things off with <strong>Windows Update</strong>.</p>
+<p>Windows Update is a service provided by Microsoft to provide security updates, feature enhancements, and patches for the Windows operating system and other Microsoft products, such as Microsoft Defender.</p>
+<p>Updates are typically released on the 2nd Tuesday of each month. This day is called <strong>Patch Tuesday</strong>. That doesn&#x27;t necessarily mean that a critical update/patch has to wait for the next Patch Tuesday to be released. If the update is urgent, then Microsoft will push the update via the Windows Update service to the Windows devices.</p>
+<p>Refer to the following link to see the <strong>Microsoft Security Update</strong> Guide <a href="https://msrc.microsoft.com/update-guide">here</a>.</p>
+<p>Windows Update is located in Settings. See below.</p>
+<p><strong>Tip</strong>: Another way to access Windows Update is from the Run dialog box, or CMD, by running the command <code v-pre>control /name Microsoft.WindowsUpdate</code>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-update2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the attached VM, there are a few things to highlight.</p>
+<ul>
+<li>The Windows Update settings are &#x27;managed&#x27;. (Typically, home users will not see this type of message)</li>
+<li>There are no available updates available for the virtual machine. (The attached virtual machine does not have Internet access to communicate with Microsoft to obtain new updates)</li>
+</ul>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-update2b.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Throughout the years, Windows users have grown accustomed to pushing Windows Updates off to a later date or not installing the updates at all. Various reasons caused this action, one being the fact that a reboot is typically required after a Windows update.</p>
+<p>Microsoft notably addressed this issue with Windows 10. The updates can no longer be ignored or pushed to the side until forgotten. Windows updates can only be postponed, but eventually, the update will happen, and your computer will reboot. Microsoft provides these updates to keep the device safe and secure.</p>
+<p>Below is an image showing how a <strong>Restart requir</strong>ed looks and the several options available regarding scheduling the restart.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-update3.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Answer the questions below</strong></p>
+<p>There were two definition updates installed in the attached VM. On what date were these updates installed?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals3/update.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">5/3/2021</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-3">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-3">#</doc-anchor-trigger>
+        <span>Task 3</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="windows-security">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-security">#</doc-anchor-trigger>
+        <span>Windows Security</span>
+    </h3>
+</doc-anchor-target>
+<p>Per Microsoft, &quot;<strong>Windows Security</strong> is your home to manage the tools that protect your device and your data&quot;.</p>
+<p>In case you missed it, <strong>Windows Security</strong> is also available in <strong>Settings</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-security.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the above image, focus your attention on <strong>Protection areas</strong>.</p>
+<ul>
+<li>Virus &amp; threat protection</li>
+<li>Firewall &amp; network protection</li>
+<li>App &amp; browser control</li>
+<li>Device security</li>
+</ul>
+<p>Each following task will briefly touch on these areas.</p>
+<p>Before proceeding, let&#x27;s provide a quick comment on the status icons.</p>
+<ul>
+<li><strong>Green</strong> means your device is sufficiently protected, and there aren&#x27;t any recommended actions.</li>
+<li><strong>Yellow</strong> means there is a safety recommendation for you to review.</li>
+<li><strong>Red</strong> is a warning that something needs your immediate attention.</li>
+</ul>
+<p>Click on Open <strong>Windows Security</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-security2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<blockquote>
+<p><strong>Note</strong>: Since the attached VM is a <strong>Windows Server 2019</strong> edition, it looks different from a <strong>Windows 10 Home</strong> or <strong>Professional</strong> edition.</p>
+</blockquote>
+<p>The below image is from a Windows 10 device.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-security1b.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Next, we&#x27;ll look at <strong>Virus &amp; threat protection</strong>.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>In the above image, which area needs immediate attention?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Virus &amp; threat protection</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-4">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-4">#</doc-anchor-trigger>
+        <span>Task 4</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="virus--threat-protection">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virus--threat-protection">#</doc-anchor-trigger>
+        <span>Virus &amp; threat protection</span>
+    </h3>
+</doc-anchor-target>
+<p>Virus &amp; threat protection is divided into two parts:</p>
+<ul>
+<li><strong>Current threats</strong></li>
+<li><strong>Virus &amp; threat protection settings</strong></li>
+</ul>
+<p>The image below only focuses on <strong>Current threats</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-security3.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="current-threats">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#current-threats">#</doc-anchor-trigger>
+        <span>Current threats</span>
+    </h4>
+</doc-anchor-target>
+<p><strong>Scan options</strong></p>
+<ul>
+<li>Quick scan - Checks folders in your system where threats are commonly found.</li>
+<li>Full scan - Checks all files and running programs on your hard disk. This scan could take longer than one hour.</li>
+<li>Custom scan - Choose which files and locations you want to check.</li>
+</ul>
+<p><strong>Threat history</strong></p>
+<ul>
+<li>Last scan - Windows Defender Antivirus automatically scans your device for viruses and other threats to help keep it safe.</li>
+<li>Quarantined threats - Quarantined threats have been isolated and prevented from running on your device. They will be periodically removed.</li>
+<li>Allowed threats - Allowed threats are items identified as threats, which you allowed to run on your device.</li>
+</ul>
+<p><strong>Warning</strong>: Allow an item to run that has been identified as a threat only if you are <strong>100%</strong> sure of what you are doing.</p>
+<p>Next is <strong>Virus &amp; threat protection settings</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-security4.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="virus--threat-protection-settings">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virus--threat-protection-settings">#</doc-anchor-trigger>
+        <span>Virus &amp; threat protection settings</span>
+    </h4>
+</doc-anchor-target>
+<p><strong>Manage settings</strong></p>
+<ul>
+<li>Real-time protection - Locates and stops malware from installing or running on your device.</li>
+<li>Cloud-delivered protection - Provides increased and faster protection with access to the latest protection data in the cloud.</li>
+<li>Automatic sample submission - Send sample files to Microsoft to help protect you and others from potential threats.</li>
+<li>Controlled folder access - Protect files, folders, and memory areas on your device from unauthorized changes by unfriendly applications.</li>
+<li>Exclusions - Windows Defender Antivirus won&#x27;t scan items that you&#x27;ve excluded.</li>
+<li>Notifications - Windows Defender Antivirus will send notifications with critical information about the health and security of your device.</li>
+</ul>
+<p><strong>Warning</strong>: Excluded items could contain threats that make your device vulnerable. Only use this option if you are <strong>100%</strong> sure of what you are doing.</p>
+<doc-anchor-target id="virus--threat-protection-updates">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virus--threat-protection-updates">#</doc-anchor-trigger>
+        <span>Virus &amp; threat protection updates</span>
+    </h4>
+</doc-anchor-target>
+<ul>
+<li><strong>Check for updates</strong> - Manually check for updates to update Windows Defender Antivirus definitions.</li>
+</ul>
+<p><strong>Ransomware protection</strong></p>
+<ul>
+<li><strong>Controlled folder access</strong> - Ransomware protection requires this feature to be enabled, which in turn requires Real-time protection to be enabled.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: Real-time protection is turned off in the attached VM to decrease the chances of performance issues. Since the VM can&#x27;t reach the Internet and there aren&#x27;t any threats in the VM, this is safe to do. Real-time protection should definitely be enabled in your personal Windows devices unless you have a 3rd party product that provides the same protection. Ensure it&#x27;s always up-to-date and enabled.</p>
+</blockquote>
+<p><strong>Tip</strong>: You can perform on-demand scans on any file/folder by right-clicking the item and selecting &#x27;Scan with Microsoft Defender&#x27;.</p>
+<p>The below image was taken from another Windows device to show this feature.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-defender-scan.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Answer the questions below</strong></p>
+<p>Specifically, what is turned off that Windows is notifying you to turn on?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Real-time protection</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-5">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-5">#</doc-anchor-trigger>
+        <span>Task 5</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="firewall--network-protection">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#firewall--network-protection">#</doc-anchor-trigger>
+        <span>Firewall &amp; network protection</span>
+    </h3>
+</doc-anchor-target>
+<p>What is a <strong>firewall</strong>?</p>
+<p>Per Microsoft, &quot;<em>Traffic flows into and out of devices via what we call ports. A firewall is what controls what is - and more importantly isn&#x27;t - allowed to pass through those ports. You can think of it like a security guard standing at the door, checking the ID of everything that tries to enter or exit</em>&quot;.</p>
+<p>The below image will reflect what you will see when you navigate to <strong>Firewall &amp; network protection</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-firewall.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Note: Each network may have different status icons for you.</p>
+<p>What is the difference between the 3 (<strong>Domain</strong>, <strong>Private</strong>, and <strong>Public</strong>)?</p>
+<p>Per Microsoft, &quot;<em>Windows Firewall offers three firewall profiles: domain, private and public</em>&quot;.</p>
+<ul>
+<li><strong>Domain</strong> - The domain profile applies to networks where the host system can authenticate to a domain controller.</li>
+<li><strong>Private</strong> - The private profile is a user-assigned profile and is used to designate private or home networks.</li>
+<li><strong>Public</strong> - The default profile is the public profile, used to designate public networks such as Wi-Fi hotspots at coffee shops, airports, and other locations.</li>
+</ul>
+<p>If you click on any firewall profile, another screen will appear with two options: <strong>turn the firewall on/off</strong> and <strong>block all incoming connections</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-firewall2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Warning</strong>: Unless you are <strong>100%</strong> confident in what you are doing, it is recommended that you leave your Windows Defender Firewall enabled.</p>
+<p>Allow an app through firewall</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-firewall3.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>You can view what the current settings for any firewall profile are. In the above image, several apps have access in the Private and/or Public firewall profile. Some of the apps will provide additional information if it&#x27;s available via the <code v-pre>Details</code> button.</p>
+<p><strong>Advanced Settings</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-firewall4.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Configuring the <strong>Windows Defender Firewall</strong> is for advanced Windows users. Refer to the following Microsoft documentation on best practices [here(https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/best-practices-configuring)].</p>
+<p><strong>Tip</strong>: Command to open the Windows Defender Firewall is <code v-pre>WF.msc</code>.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>If you were connected to airport Wi-Fi, what most likely will be the active firewall profile?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Public network</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-6">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-6">#</doc-anchor-trigger>
+        <span>Task 6</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="app--browser-control">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#app--browser-control">#</doc-anchor-trigger>
+        <span>App &amp; browser control</span>
+    </h3>
+</doc-anchor-target>
+<p>In this section, you can change the settings for the <strong>Microsoft Defender SmartScreen</strong>.</p>
+<p>Per Microsoft, &quot;Microsoft Defender SmartScreen protects against phishing or malware websites and applications, and the downloading of potentially malicious files&quot;.</p>
+<p>Refer to the official Microsoft document for more information on Microsoft Defender SmartScreen <a href="https://feedback.smartscreen.microsoft.com/smartscreenfaq.aspx">here</a>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-app-control.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Check apps and files</strong></p>
+<ul>
+<li><strong>Windows Defender SmartScreen</strong> helps protect your device by checking for unrecognized apps and files from the web.</li>
+</ul>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-smartscreen.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Exploit protection</strong></p>
+<ul>
+<li>Exploit protection is built into Windows 10 (and, in our case, Windows Server 2019) to help protect your device against attacks.</li>
+</ul>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-exploit-protection.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Warning</strong>: Unless you are 100% confident in what you are doing, it is recommended that you leave the default settings.</p>
+<doc-anchor-target id="task-7">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-7">#</doc-anchor-trigger>
+        <span>Task 7</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="device-security">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#device-security">#</doc-anchor-trigger>
+        <span>Device security</span>
+    </h3>
+</doc-anchor-target>
+<p>Even though you&#x27;ll probably never change any of these settings, for completion&#x27;s sake, it will be covered briefly.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-device-sec.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Core isolation</strong></p>
+<ul>
+<li><strong>Memory Integrity</strong> - Prevents attacks from inserting malicious code into high-security processes.</li>
+</ul>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-mem-integrity2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Warning</strong>: Unless you are <strong>100%</strong> confident in what you are doing, it is recommended that you leave the default settings.</p>
+<p>The below images are from another machine to show another security feature that should be available in a personal Windows 10 device.</p>
+<p><strong>Security processor</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-sec-processor.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Below are the <strong>Security processor details</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/windows-tpm.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>What is the <strong>Trusted Platform Module (TPM)</strong>?</p>
+<p>Per Microsoft, &quot;Trusted Platform Module (TPM) technology is designed to provide hardware-based, security-related functions. A TPM chip is a secure crypto-processor that is designed to carry out cryptographic operations. The chip includes multiple physical security mechanisms to make it tamper-resistant, and malicious software is unable to tamper with the security functions of the TPM&quot;.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the TPM?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Trusted Platform Module</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-8">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-8">#</doc-anchor-trigger>
+        <span>Task 8</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="bitlocker">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bitlocker">#</doc-anchor-trigger>
+        <span>BitLocker</span>
+    </h3>
+</doc-anchor-target>
+<p>What is BitLocker?</p>
+<p>Per Microsoft, &quot;BitLocker Drive Encryption is a data protection feature that integrates with the operating system and addresses the threats of data theft or exposure from lost, stolen, or inappropriately decommissioned computers&quot;.</p>
+<p>On devices with TPM installed, BitLocker offers the best protection.</p>
+<p>Per Microsoft, &quot;<strong>BitLocker provides the most protection when used with a Trusted Platform Module (TPM) version 1.2 or later. The TPM is a hardware component installed in many newer computers by the computer manufacturers. It works with BitLocker to help protect user data and to ensure that a computer has not been tampered with while the system was offline</strong>&quot;.</p>
+<p>Refer to the official Microsoft documentation to learn more about BitLocker <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/">here</a>.</p>
+<blockquote>
+<p><strong>Note</strong>: The BitLocker feature is not included in the attached VM.</p>
+</blockquote>
+<p><strong>Answer the questions below</strong></p>
+<p>What must a user insert on computers that DO NOT have a TPM version 1.2 or later?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">USB startup key</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-9">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-9">#</doc-anchor-trigger>
+        <span>Task 9</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="volume-shadow-copy-service">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#volume-shadow-copy-service">#</doc-anchor-trigger>
+        <span>Volume Shadow Copy Service</span>
+    </h3>
+</doc-anchor-target>
+<p>Per <a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service">Microsoft</a>, the <strong>Volume Shadow Copy Service</strong> (VSS) coordinates the required actions to create a consistent shadow copy (also known as a snapshot or a point-in-time copy) of the data that is to be backed up.</p>
+<p>Volume Shadow Copies are stored on the System Volume Information folder on each drive that has protection enabled.</p>
+<p>If VSS is enabled (<strong>System Protection</strong> turned on), you can perform the following tasks from within <strong>advanced system settings</strong>.</p>
+<ul>
+<li><strong>Create a restore point</strong></li>
+<li><strong>Perform system restore</strong></li>
+<li><strong>Configure restore settings</strong></li>
+<li><strong>Delete restore points</strong></li>
+</ul>
+<p>From a security perspective, malware writers know of this Windows feature and write code in their malware to look for these files and delete them. Doing so makes it impossible to recover from a ransomware attack unless you have an offline/off-site backup.</p>
+<p>If you wish to configure Shadow Copies within the attached VM, see below.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/vss1.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun3/vss2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is VSS?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Volume Shadow Copy Service</code></pre>
+</doc-codeblock></div>
+<p><strong>Completed</strong></p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../internship/day-01/tryhackme/windowsfundamentals2/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Windows Fundamentals 2</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../internship/day-01/assignment/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Assignment</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://x.com/neospl0it">X</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://www.linkedin.com/in/nijithwilson/">LinkedIn</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://instagram.com/neosploit">Instagram</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://discord.gg/YSBfz3JnNE">Discord</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://t.me/project_entity">Telegram</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Windows Fundamentals 3", level: 4, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>

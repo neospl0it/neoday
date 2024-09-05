@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778867567662">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Windows Fundamentals 2</title>
+    <meta name="title" content="Windows Fundamentals 2">
+    <meta name="description" content="We will continue our journey exploring the Windows operating system.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/internship/day-01/tryhackme/windowsfundamentals2/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/internship/day-01/tryhackme/windowsfundamentals2/">
+    <meta property="og:title" content="Windows Fundamentals 2">
+    <meta property="og:description" content="We will continue our journey exploring the Windows operating system.">
+    <meta property="og:image" content="/bp-assets/internship/tryhackme/windowsfundamentals2/msconfg.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/internship/day-01/tryhackme/windowsfundamentals2/">
+    <meta property="twitter:title" content="Windows Fundamentals 2">
+    <meta property="twitter:description" content="We will continue our journey exploring the Windows operating system.">
+    <meta property="twitter:image" content="/bp-assets/internship/tryhackme/windowsfundamentals2/msconfg.png">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../../resources/css/retype.css?v=3.5.0.778867567662" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.778867567662" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.778867567662" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.778867567662" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">NEODay</span>
+                        </a>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://ne0day.github.io">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M11.03 2.59a1.501 1.501 0 0 1 1.94 0l7.5 6.363a1.5 1.5 0 0 1 .53 1.144V19.5a1.5 1.5 0 0 1-1.5 1.5h-5.75a.75.75 0 0 1-.75-.75V14h-2v6.25a.75.75 0 0 1-.75.75H4.5A1.5 1.5 0 0 1 3 19.5v-9.403c0-.44.194-.859.53-1.144ZM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v6.25h5v-9.403Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/ne0day/ne0day.github.io/discussions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"/><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>Discussions</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/neospl0it">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://ne0day.github.io">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M11.03 2.59a1.501 1.501 0 0 1 1.94 0l7.5 6.363a1.5 1.5 0 0 1 .53 1.144V19.5a1.5 1.5 0 0 1-1.5 1.5h-5.75a.75.75 0 0 1-.75-.75V14h-2v6.25a.75.75 0 0 1-.75.75H4.5A1.5 1.5 0 0 1 3 19.5v-9.403c0-.44.194-.859.53-1.144ZM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v6.25h5v-9.403Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/ne0day/ne0day.github.io/discussions">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"/><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>Discussions</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/neospl0it">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="windows-fundamentals-2" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-fundamentals-2">#</doc-anchor-trigger>
+        <span>Windows Fundamentals 2</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="task-1">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-1">#</doc-anchor-trigger>
+        <span>Task 1</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="introduction">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#introduction">#</doc-anchor-trigger>
+        <span>Introduction</span>
+    </h3>
+</doc-anchor-target>
+<p>We will continue our journey exploring the Windows operating system.</p>
+<p>In Windows Fundamentals 1, we covered the desktop, the file system, user account control, the control panel, settings, and the task manager.</p>
+<p>This module will attempt to provide an overview of some other utilities available within the Windows operating system and different methods to access these utilities.</p>
+<p>Launch the attached virtual machine. If you wish to access the virtual machine via Remote Desktop, use the credentials below.</p>
+<p><strong>Machine Ip</strong>: <code v-pre>10.10.15.100</code></p>
+<p><strong>User:</strong> <code v-pre>administrator</code></p>
+<p><strong>Password</strong>: <code v-pre>letmein123!</code></p>
+<p><em>Command</em></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">xfreerdp /u:administrator /p:letmein123! /v:10.10.15.100</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-2">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-2">#</doc-anchor-trigger>
+        <span>Task 2</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="system-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#system-configuration">#</doc-anchor-trigger>
+        <span>System Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>The System Configuration utility (MSConfig) is for advanced troubleshooting, and its main purpose is to help diagnose startup issues.</p>
+<p>Reference the following document <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/system-configuration-utility-troubleshoot-configuration-errors">here</a> for more information on the System Configuration utility.</p>
+<p>There are several methods to launch System Configuration. One method is from the Start Menu.</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/msconfg.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<blockquote>
+<p>Note: <em>You need local administrator rights to open this utility.</em></p>
+</blockquote>
+<p>The utility has five tabs across the top. Below are the names for each tab. We will briefly cover each tab in this task.</p>
+<ul>
+<li>General</li>
+<li>Boot</li>
+<li>Services</li>
+<li>Startup</li>
+<li>Tools</li>
+</ul>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/sys-confg.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the <strong>General</strong> tab, we can select what devices and services for Windows to load upon boot. The options are: <strong>Normal</strong>, <strong>Diagnostic</strong>, or <strong>Selective</strong>.</p>
+<p>In the <strong>Boot</strong> tab, we can define various boot options for the Operating System.</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/boot-tab.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The <strong>Services</strong>tab lists all services configured for the system regardless of their state (running or stopped). A service is a special type of application that runs in the background.</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/services.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the <strong>Startup</strong> tab, you won&#x27;t see anything interesting in the attached VM.  Below is a screenshot of the Startup tab for MSConfig from my local machine.</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/startup-tab.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>As you can see, Microsoft advises using Task Manager (<code v-pre>taskmgr</code>) to manage (enable/disable) startup items. The System Configuration utility is <strong>NOT</strong> a startup management program.</p>
+<p><strong>Note:</strong> If you open Task Manager for the attached VM, you will notice that Task Manager doesn&#x27;t show a Startup tab.</p>
+<p>There is a list of various utilities (tools) in the Tools tab that we can run to configure the operating system further. There is a brief description of each tool to provide some insight into what the tool is for.</p>
+<p><figure class="content-center">
+    <img src="/bp-assets/internship/tryhackme/windowsfundamentals2/tools-tab.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Notice the <strong>Selected command</strong> section. The information in this textbox will change per tool.</p>
+<p>To run a tool, we can use the command to launch the tool via the run prompt, command prompt, or by clicking the <code v-pre>Launch</code> button.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the name of the service that lists Systems Internals as the manufacturer?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/psshutdown.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">PsShutdown</code></pre>
+</doc-codeblock></div>
+<p>Whom is the Windows license registered to?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/about.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+<figure class="content-center">
+    <img src="/bp-assets/internship/tryhackme/windowsfundamentals2/lsnce.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Windows User</code></pre>
+</doc-codeblock></div>
+<p>What is the command for Windows Troubleshooting?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/trblesht.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">C:\Windows\System32\control.exe /name Microsoft.Troubleshooting</code></pre>
+</doc-codeblock></div>
+<p>What command will open the Control Panel? (The answer is  the name of .exe, not the full path)</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/control.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">control.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-3">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-3">#</doc-anchor-trigger>
+        <span>Task 3</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="change-uac-settings">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#change-uac-settings">#</doc-anchor-trigger>
+        <span>Change UAC Settings</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the System Configuration panel.</p>
+<p>User Account Control (UAC) was covered in great detail in Windows Fundamentals 1.</p>
+<p>The UAC settings can be changed or even turned off entirely (not recommended).</p>
+<p>You can move the slider to see how the setting will change the UAC settings and Microsoft&#x27;s stance on the setting.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/uac.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the command to open User Account Control Settings? (The answer is the name of the .exe file, not the full path)</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/uac.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">UserAccountControlSettings.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-4">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-4">#</doc-anchor-trigger>
+        <span>Task 4</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="computer-management">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#computer-management">#</doc-anchor-trigger>
+        <span>Computer Management</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the <strong>System Configuration</strong> panel.</p>
+<p>The <strong>Computer Management</strong> (<code v-pre>compmgmt</code>) utility has three primary sections: <strong>System Tools</strong>, <strong>Storage</strong>, and <strong>Services and Applications</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/compmgmt1.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>System Tools</strong></p>
+<p>Let&#x27;s start with <strong>Task Scheduler</strong>. Per Microsoft, with Task Scheduler, we can create and manage common tasks that our computer will carry out automatically at the times we specify.</p>
+<p>A task can run an application, a script, etc., and tasks can be configured to run at any point. A task can run at log in or at log off. Tasks can also be configured to run on a specific schedule, for example, every five mins.</p>
+<p>To create a basic task, click on <code v-pre>Create Basic Task</code> under <em>Actions</em> (right pane).</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/create-task.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Next is <em>Event Viewer</em>.</p>
+<p>Event Viewer allows us to view events that have occurred on the computer. These records of events can be seen as an audit trail that can be used to understand the activity of the computer system. This information is often used to diagnose problems and investigate actions executed on the system.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/event-viewer.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Event Viewer has three panes.</p>
+<ul>
+<li>The pane on the left provides a hierarchical tree listing of the event log providers. (as shown in the image above)</li>
+<li>The pane in the middle will display a general overview and summary of the events specific to a selected provider.</li>
+<li>The pane on the right is the actions pane.</li>
+</ul>
+<p>There are five types of events that can be logged. Below is a table from docs.microsoft.com providing a brief description for each.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-event-logs/five-event-types.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The standard logs are visible under Windows Logs. Below is a table from docs.microsoft.com providing a brief description for each.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-event-logs/standard-event-logs.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>For more information about Event Viewer and Event Logs, please refer to the Windows Event Log room.</p>
+<p><strong>Shared Folders</strong> is where you will see a complete list of shares and folders shared that others can connect to.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/shared-folders.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the above image, under Shares, are the default share of Windows, C$, and default remote administration shares created by Windows, such as ADMIN$.</p>
+<p>As with any object in Windows, you can right-click on a folder to view its properties, such as Permissions (who can access the shared resource).</p>
+<p>Under <strong>Sessions</strong>, you will see a list of users who are currently connected to the shares. In this VM, you won&#x27;t see anybody connected to the shares.</p>
+<p>All the folders and/or files that the connected users access will list under <strong>Open Files</strong>.</p>
+<p>The <strong>Local Users and Groups</strong> section you should be familiar with from Windows Fundamentals 1 because it&#x27;s <code v-pre>lusrmgr.msc</code>.</p>
+<p>In <strong>Performance</strong>, you&#x27;ll see a utility called <strong>Performance Monitor</strong> (<code v-pre>perfmon</code>).</p>
+<p>Perfmon is used to view performance data either in real-time or from a log file. This utility is useful for troubleshooting performance issues on a computer system, whether local or remote.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/perfmon.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Device Manager</strong> allows us to view and configure the hardware, such as disabling any hardware attached to the computer.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/device-mgr.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Storage</strong></p>
+<p>Under Storage is <strong>Windows Server Backup</strong> and <strong>Disk Management</strong>. We&#x27;ll only look at Disk Management in this room.</p>
+<p><strong>Note</strong>: Since the virtual machine is a Windows Server operating system, there are utilities available that you will typically not see in Windows 10.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/disk-mgmt.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Disk Management is a system utility in Windows that enables you to perform advanced storage tasks.  Some tasks are:</p>
+<ul>
+<li>Set up a new drive</li>
+<li>Extend a partition</li>
+<li>Shrink a partition</li>
+<li>Assign or change a drive letter (ex. E:)</li>
+</ul>
+<p><strong>Services and Applications</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/services-apps.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Recall from the previous task; a service is a special type of application that runs in the background. Here you can do more than enable and disable a service, such as view the Properties for the service.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/service.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>WMI Control configures and controls the <strong>Windows Management Instrumentation</strong>(WMI) service.</p>
+<p>Per Wikipedia, &quot;<em>WMI allows scripting languages (such as VBScript or Windows PowerShell) to manage Microsoft Windows personal computers and servers, both locally and remotely. Microsoft also provides a command-line interface to WMI called Windows Management Instrumentation Command-line (WMIC).</em>&quot;</p>
+<blockquote>
+<p>Note: <em>The WMIC tool is deprecated in Windows 10, version 21H1. Windows PowerShell supersedes this tool for WMI.</em></p>
+</blockquote>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the command to open Computer Management? (The answer is the name of the .msc file, not the full path)</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/msc.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">compmgmt.msc</code></pre>
+</doc-codeblock></div>
+<p>At what time every day is the GoogleUpdateTaskMachineUA task configured to run?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/time.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">6:15 AM</code></pre>
+</doc-codeblock></div>
+<p>What is the name of the hidden folder that is shared?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/shared.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">sh4r3dF0Ld3r</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-5">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-5">#</doc-anchor-trigger>
+        <span>Task 5</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="system-information">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#system-information">#</doc-anchor-trigger>
+        <span>System Information</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the <strong>System Configuration</strong> panel.</p>
+<p>What is the <strong>System Information</strong> (<code v-pre>msinfo32</code>) tool?</p>
+<p>Per Microsoft, &quot;<em>Windows includes a tool called Microsoft System Information (Msinfo32.exe).  This tool gathers information about your computer and displays a comprehensive view of your hardware, system components, and software environment, which you can use to diagnose computer issues.</em>&quot;</p>
+<p>The  information in <strong>System Summary</strong> is divided into three sections:</p>
+<ul>
+<li>Hardware Resources</li>
+<li>Components</li>
+<li>Software Environment</li>
+</ul>
+<p>System Summary will display general technical specifications for the computer, such as processor brand and model.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/system-summary.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The information displayed in Hardware Resources is not for the average computer user. If you want to learn more about this section, refer to the official Microsoft [page(https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/hardware-resources)].</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/hardware-resources.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Under <strong>Components</strong>, you can see specific information about the hardware devices installed on the computer. Some sections don&#x27;t show any information, but some sections do, such as <strong>Display</strong> and <strong>Input</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/components.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the <strong>Software Environment</strong> section, you can see information about software baked into the operating system and software you have installed. Other details are visible in this section as well, such as the <strong>Environment Variables</strong> and <strong>Network Connections</strong>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/software-env.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Recall from the Windows Fundamentals 1 room (The Windows\System32 Folder task) where Environment Variables was briefly touched on.</p>
+<p>Per Microsoft, &quot;<em>Environment variables store information about the operating system environment. This information includes details such as the operating system path, the number of processors used by the operating system, and the location of temporary folders.</em></p>
+<p><em>The environment variables store data that is used by the operating system and other programs. For example, the WINDIR environment variable contains the location of the Windows installation directory. Programs can query the value of this variable to determine where Windows operating system files are located</em>&quot;.</p>
+<p>Click on <strong>Environment Variables</strong> to see the assigned values for the virtual machine.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/env-variables.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Another method to view environment variables is <code v-pre>Control Panel &gt; System and Security &gt; System &gt; Advanced system settings &gt; Environment Variables</code> OR <code v-pre>Settings &gt; System &gt; About &gt; system info &gt; Advanced system settings &gt; Environment Variables</code>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/env-variables2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The detour is over. Let&#x27;s redirect our attention back to <code v-pre>msinfo32 </code>and pick up where we left off.</p>
+<p>Towards the very bottom of this utility, there is a search bar. Please give it a go. Select Components and search for <strong>IP address</strong>.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the command to open System Information? (The answer is the name of the .exe file, not the full path)</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Msinfo32.exe</code></pre>
+</doc-codeblock></div>
+<p>What is listed under System Name?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/sys-name.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">THM-WINFUN2</code></pre>
+</doc-codeblock></div>
+<p>Under Environment Variables, what is the value for ComSpec?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/value.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">%SystemRoot%\system32\cmd.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-6">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-6">#</doc-anchor-trigger>
+        <span>Task 6</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="resource-monitor">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#resource-monitor">#</doc-anchor-trigger>
+        <span>Resource Monitor</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the <strong>System Configuration</strong> panel.</p>
+<p>What is <strong>Resource Monitor</strong> (resmon)?</p>
+<p>Per Microsoft, &quot;<em>Resource Monitor displays per-process and aggregate CPU, memory, disk, and network usage information, in addition to providing details about which processes are using individual file handles and modules. Advanced filtering allows users to isolate the data related to one or more processes (either applications or services), start, stop, pause, and resume services, and close unresponsive applications from the user interface. It also includes a process analysis feature that can help identify deadlocked processes and file locking conflicts so that the user can attempt to resolve the conflict instead of closing an application and potentially losing data.</em>&quot;</p>
+<p>As some of the other tools mentioned in this room, this utility is geared primarily to advanced users who need to perform advanced troubleshooting on the computer system.</p>
+<p>In the Overview tab, Resmon has four sections:</p>
+<ul>
+<li>CPU</li>
+<li>Disk</li>
+<li>Network</li>
+<li>Memory</li>
+</ul>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon1.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The same four sections have corresponding tabs across the top. See below.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Note that each tab has additional information for each. An image is shown below for each tab.</p>
+<p><strong>CPU</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon-cpu.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Memory</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon-mem.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Disk</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon-disk.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><strong>Network</strong></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/resmon-network.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Although not captured in any of the images above, Resource Monitor has a pane at the far right. This pane shows a graphical view in real-time for each section.</p>
+<blockquote>
+<p>Note: <em>The information displayed in Resource Monitor will be different for you compared to the images above.</em></p>
+</blockquote>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the command to open Resource Monitor? (The answer is the name of the .exe file, not the full path)</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">resmon.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-7">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-7">#</doc-anchor-trigger>
+        <span>Task 7</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="command-prompt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#command-prompt">#</doc-anchor-trigger>
+        <span>Command Prompt</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the <strong>System Configuration</strong>panel.</p>
+<p>The command prompt (<code v-pre>cmd</code>) can seem daunting at first, but it&#x27;s really not that bad once you understand how to interact with it.</p>
+<p>In early operating systems, the command line was the sole way to interact with the operating system.</p>
+<p>When the GUI (graphical user interface) was introduced, it allowed users to perform complex tasks with a few clicks of a button instead of entering commands in the command prompt.</p>
+<p>Even though the GUI is the primary way to interact with the operating system, a computer user can still interact via the command prompt.</p>
+<p>In this task, we&#x27;ll only cover a few commands that a computer user can run in the command prompt to obtain information about the computer system.</p>
+<p>Let&#x27;s start with a few simple commands, such as <code v-pre>hostname</code> and <code v-pre>whoami</code>.</p>
+<p>The command <strong>hostname</strong> will output the computer name.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/hostname.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The command <strong>whoami</strong> will output the name of the logged-in user.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/whoami.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Next, let&#x27;s look at some commands that are useful when troubleshooting.</p>
+<p>A command used often is <code v-pre>ipconfig</code>. This command will show the network address settings for the computer.</p>
+<p>Each command will have a help manual to explain the expected syntax to execute the command properly, along with any additional parameters that can be added to the command to expand its execution.</p>
+<p>A  command to retrieve the help manual for a command is <code v-pre>/?</code>.</p>
+<p>For example, to see the help manual for <strong>ipconfig</strong>, you can use the following command: <code v-pre>ipconfig /?</code></p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/ipconfig-help.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<blockquote>
+<p>Note: <em>To clear the command prompt screen, the command is cls</em>.</p>
+</blockquote>
+<p>The next command is <code v-pre>netstat</code>. Per the help manual, this command will display protocol statistics and current TCP/IP network connections.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/netstat.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the above image, the line within the red box shows us an example syntax for the command.</p>
+<p>The structure tells us the <strong>netstat</strong>command can be run alone or with parameters, such as <code v-pre>-a</code>,  <code v-pre>-b</code>,  <code v-pre>-e</code>, etc.</p>
+<p>When any of the parameters are appended to the root command, netstat in this case, the output changes. Play with a few to see for yourself.</p>
+<p>The <code v-pre>net</code> command is primarily used to manage network resources. This command supports sub-commands.</p>
+<p>If you type <strong>net</strong> without a sub-command, the output will show the syntax for the root command showing a few of the sub-commands you can use.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/net.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>For the net command, to display the help manual <code v-pre>/?</code> will not work. In this case, you need to use different syntax, which is <code v-pre>net help</code>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/net-help.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>So, if you wish to see the help information for <code v-pre>net user</code> , the command is <code v-pre>net help user</code>.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/net-help-user2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>You can use the same command to view the help information for other useful <strong>net</strong> sub-commands, such as <strong>localgroup</strong>, <strong>use</strong>, <strong>share</strong>, and <strong>session</strong>.</p>
+<p>Refer to the following link to see a comprehensive list of commands you can execute in the command prompt <a href="https://ss64.com/nt/">here</a>.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>In System Configuration, what is the full command for Internet Protocol Configuration?</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/prtcl-config.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe</code></pre>
+</doc-codeblock></div>
+<p>For the ipconfig command, how do you show detailed information?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">ipconfig /all</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-8">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-8">#</doc-anchor-trigger>
+        <span>Task 8</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="registry-editor">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#registry-editor">#</doc-anchor-trigger>
+        <span>Registry Editor</span>
+    </h3>
+</doc-anchor-target>
+<p>We&#x27;re continuing with Tools that are available through the <strong>System Configuration</strong> panel.</p>
+<p>The <strong>Windows Registry</strong> (per Microsoft) is a central hierarchical database used to store information necessary to configure the system for one or more users, applications, and hardware devices.</p>
+<p>The registry contains information that Windows continually references during operation, such as:</p>
+<ul>
+<li>Profiles for each user</li>
+<li>Applications installed on the computer and the types of documents that each can create</li>
+<li>Property sheet settings for folders and application icons</li>
+<li>What hardware exists on the system</li>
+<li>The ports that are being used.</li>
+</ul>
+<p><strong>Warning</strong>: The registry is for advanced computer users. Making changes to the registry can affect normal computer operations.</p>
+<p>There are various ways to view/edit the registry. One way is to use the <em>Registry Editor</em> (<code v-pre>regedit</code>).</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/regedit.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Refer to the following Microsoft documentation here to learn more about the Windows Registry.</p>
+<p><strong>Answer the questions below</strong></p>
+<p>What is the command to open the Registry Editor? (The answer is the name of  the .exe file, not the full path)</p>
+<p><figure class="content-center">
+    <img src="../../../../bp-assets/internship/tryhackme/windowsfundamentals2/reg.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">regedt32.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="task-9">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#task-9">#</doc-anchor-trigger>
+        <span>Task 9</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="conclusion">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#conclusion">#</doc-anchor-trigger>
+        <span>Conclusion</span>
+    </h3>
+</doc-anchor-target>
+<p>Recall that the tasks covered in this room were some of the tools that can launch from <code v-pre>MSConfig</code>.</p>
+<p>Throughout the room, commands and shortcuts were shared for the utilities. This means you don&#x27;t have to launch <strong>MSConfig</strong> to run these utilities.</p>
+<p>You can also run some of these utilities directly from the Start Menu. See below where some of these utilities can be found.</p>
+<p><figure class="content-center">
+    <img src="https://assets.tryhackme.com/additional/win-fun2/start-menu.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Some of the tools listed in <strong>MSConfig</strong> that weren&#x27;t mentioned in this room were either covered in Windows Fundamentals 1 or were left for you to explore on your own.</p>
+<p><strong>Completed</strong></p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../internship/day-01/tryhackme/linuxfundamentalspart1/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Linux Fundamentals Part 1</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../internship/day-01/tryhackme/windowsfundamentals3/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Windows Fundamentals 3</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://x.com/neospl0it">X</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://www.linkedin.com/in/nijithwilson/">LinkedIn</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://instagram.com/neosploit">Instagram</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://discord.gg/YSBfz3JnNE">Discord</a>
+                                        </li>
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://t.me/project_entity">Telegram</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Windows Fundamentals 2", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
